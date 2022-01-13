@@ -1,12 +1,17 @@
 n = int(input())
-arr = []
-rnk = [1 for _ in range(n)]
+cnt = 0
+def ishan(a):
+	s = -1
+	arr = list(map(int, list(str(a))))
+	if len(arr) == 1:
+		return 1
+	s = arr[0] - arr[1]
+	for i in range(len(arr) - 1):
+		if arr[i] - arr[i+1] != s:
+			return 0
+	return 1
 
-for _ in range(n):
-	arr.append(list(map(int, input().split())))
-
-for i in range(len(arr)):
-	for j in range(len(arr)):
-		if arr[i][0] > arr[j][0] and arr[i][1] > arr[j][1]:
-			rnk[j] += 1
-print(' '.join(list(map(str, rnk))))
+for i in range(1, n+1):
+	if ishan(i) == 1:
+		cnt += 1
+print(cnt)
